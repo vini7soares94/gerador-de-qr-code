@@ -1,23 +1,101 @@
-.container {
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222;
+}
+
+.wrapper {
+    height: 260px;
+    background: #333;
+    max-width: 410px;
+    border-radius: 7px;
+    padding: 16px 25px;
+    transition: height 0.5s ease;
+}
+
+.wrapper.active {
+    height: 530px;
+}
+
+header h1 {
     text-align: center;
-    margin-top: 50px;
-  }
-  
-  input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    font-weight: 500;
+    font-size: 21px;
     color: #fff;
+}
+
+header p {
+    text-align: center;
+    margin-top: 5px;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.wrapper .form {
+    margin: 20px 0 25px;
+}
+
+.wrapper :where(input, button) {
+    width: 100%;
+    height: 55px;
     border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.form input {
+    font-size: 18px;
+    padding: 0 17px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: #ddd;
+}
+
+.form button {
+    color: #fff;
     cursor: pointer;
-  }
-  
-  #qrcode {
     margin-top: 20px;
-  }
-  
+    font-size: 17px;
+    background: #007bff;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+.wrapper .qr-code {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    padding: 33px 0;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #555;
+}
+
+.wrapper .img {
+    width: 200px;
+    height: auto;
+}
+
+.wrapper.active .qr-code {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s ease;
+}
