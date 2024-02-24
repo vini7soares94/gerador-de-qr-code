@@ -1,20 +1,23 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var generateButton = document.getElementById('generateButton');
-    var inputText = document.getElementById('inputText');
-    var qrCodeDiv = document.getElementById('qrcode');
-  
-    generateButton.addEventListener('click', function() {
-      var text = inputText.value.trim();
-      if (!text) {
-        alert('Por favor, insira um texto para gerar o QR code.');
-        return;
-      }
-      qrCodeDiv.innerHTML = '';
-      new QRCode(qrCodeDiv, {
-        text: text,
-        width: 200,
-        height: 200
-      });
-    });
-  });
-  
+const container = document.querySelector('.container'),
+qrInput = container.querySelector('.form input'),
+generateBtn = container.querySelector('.form button'),
+qrImg = container.querySelector('.qr-code .img');
+
+generateBtn.addEventListener('click', () =>{
+    let qrValue = qrInput.value;
+    if(!qrValue){
+        alert('Insira uma URL ou texto para gerar um Qr Code')
+    return;
+}
+generateBtn.InnerText = "Gerando um Qr Code...";
+qrImg.src= `https://www.youtube.com/v1/create-qr-code/?size=170x170&data$(qrValue)`;
+qrImg.addEventListener('load', () => {
+    generateBtn.InnerText = "Gerar Qr Code";
+    container.classList.add('active');
+});
+});
+qrInput.addEventListener('keyup', () => {
+    if(!qrInput.value) {
+        container.classList.remove('active');
+    };
+});
